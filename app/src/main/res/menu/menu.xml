@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_medicamentos"
+        android:title="@string/medicamentos"/>
+    <item
+        android:id="@+id/menu_usuario"
+        android:title="@string/usuario"/>
+    <item
+        android:id="@+id/menu_receitas"
+        android:title="@string/receitas"/>
+
+
+
+
+
+</menu>
