@@ -1,10 +1,6 @@
-package me.ads.lembretemedicamentos.medicamentos;
+package me.ads.lembretemedicamentos.usuarios;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +8,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-
 import me.ads.lembretemedicamentos.R;
 import me.ads.lembretemedicamentos.database.DatabaseHelper;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 public class ListarFragment extends Fragment {
 
-    public ListarFragment() { }
+    public ListarFragment() {
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,28 +28,25 @@ public class ListarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        View v = inflater.inflate(R.layout.medicamentos_fragment_listar, container, false);
-
+        View v = inflater.inflate(R.layout.usuario_fragment_listar, container, false);
         DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
-        ListView lv = v.findViewById(R.id.list_view_listar_medicamentos);
-        databaseHelper.getAllMedicamentos(getActivity(), lv);
+        ListView lv = v.findViewById(R.id.listViewUsuarios);
+        databaseHelper.getAllUsuario(getActivity(), lv);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tvId = view.findViewById(R.id.textViewIdListarMedicamentos);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView tvId = view.findViewById(R.id.textViewIdListUsuario);
                 Bundle b = new Bundle();
                 b.putInt("id", Integer.parseInt(tvId.getText().toString()));
 
-                EditarFragment editar = new EditarFragment();
+                EditarFragment editarFragment = new EditarFragment();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                editar.setArguments(b);
-                ft.replace(R.id.frame_medicamentos, editar).commit();
+                editarFragment.setArguments(b);
+                ft.replace(R.id.frameUsuario, editarFragment).commit();
             }
         });
 
         return v;
-
     }
 }

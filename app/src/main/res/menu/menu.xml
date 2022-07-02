@@ -10,8 +10,4 @@
         android:id="@+id/menu_receitas"
         android:title="@string/receitas"/>
 
-
-
-
-
 </menu>

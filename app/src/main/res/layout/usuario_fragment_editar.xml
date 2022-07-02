@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".medicamentos.EditarFragment">
-
+    tools:context=".usuarios.EditarFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,108 +12,109 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_view_editar_medicamentos"
+                android:id="@+id/textViewEditarUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:textStyle="bold"
                 android:padding="10dp"
-                android:text="@string/editar" />
+                android:text="@string/editar"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/text_view_nome_medicamentos"
+                android:id="@+id/textViewNomeUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/nome" />
 
             <EditText
-                android:id="@+id/editText_nome_medicamentos"
+                android:id="@+id/editTextNomeUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/text_view_dosagem_medicamentos"
+                android:id="@+id/textViewEmailUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="@string/dosagem" />
+                android:layout_marginTop="10dp"
+                android:text="@string/e_mail" />
 
             <EditText
-                android:id="@+id/editText_dosagem_medicamentos"
+                android:id="@+id/editTextEmailUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="textEmailAddress" />
 
             <TextView
-                android:id="@+id/text_view_tipo_medicamentos"
+                android:id="@+id/textViewCelularUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="@string/tipo" />
+                android:layout_marginTop="10dp"
+                android:text="@string/celular" />
 
             <EditText
-                android:id="@+id/editText_tipo_medicamentos"
+                android:id="@+id/editTextCelularUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="phone" />
 
             <TextView
-                android:id="@+id/text_view_posologia_medicamentos"
+                android:id="@+id/textViewSexoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="@string/posologia" />
+                android:layout_marginTop="10dp"
+                android:text="@string/sexo" />
 
             <EditText
-                android:id="@+id/editText_posologia_medicamentos"
+                android:id="@+id/editTextSexoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="text" />
 
             <TextView
-                android:id="@+id/text_view_tempo_tratamento_medicamentos"
+                android:id="@+id/textViewDataNascimentoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="@string/tempo_de_tratamento" />
+                android:layout_marginTop="10dp"
+                android:text="@string/data_nascimento" />
 
             <EditText
-                android:id="@+id/editText_tempo_tratamento_medicamentos"
+                android:id="@+id/editTextDataNascimentoUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"/>
+                android:inputType="date" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button_editar_medicamentos"
-                    android:layout_width="115dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/salvar" />
-
-                <Button
-                    android:id="@+id/button_excluir_medicamentos"
+                    android:id="@+id/buttonExcluirUsuario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:text="@string/excluir" />
 
+                <Button
+                    android:id="@+id/buttonEditarUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/salvar" />
             </LinearLayout>
 
         </LinearLayout>

@@ -13,15 +13,11 @@ import me.ads.lembretemedicamentos.R;
 
 public class MainFragment extends Fragment {
 
-      public MainFragment() {
-
-    }
-
+    public MainFragment() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

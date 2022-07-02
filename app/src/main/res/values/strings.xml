@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">Lembrete Medicamentos</string>
-    <string name="medicamentos">Medicamentos</string>
+
     <string name="usuario">Usuário</string>
     <string name="receitas">Receitas</string>
 
+    <string name="medicamentos">Medicamentos</string>
     <string name="listar_medicamentos">Listar Medicamentos</string>
     <string name="gerenciar_medicamentos">Gerenciar Medicamentos</string>
+    <string name="excluir_medicamentos_mensagem">Deseja excluir o medicamento?</string>
+    <string name="excluir_usuario_mensagem">Deseja realmente excluir o usuário?</string>
 
     <string name="listar">Listar</string>
     <string name="adicionar">Adicionar</string>
@@ -13,14 +16,20 @@
     <string name="salvar">Salvar</string>
     <string name="excluir">Excluir</string>
     <string name="voltar">Voltar</string>
-
-
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
     <string name="nome">Nome</string>
     <string name="dosagem">Dosagem</string>
     <string name="tipo">Tipo</string>
     <string name="tempo_de_tratamento">Tempo de tratamento</string>
     <string name="posologia">Posologia</string>
+    <string name="gerenciar_usuarios">Gerenciar Usuários</string>
+    <string name="celular">Celular</string>
+    <string name="data_nascimento">Data nascimento</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sexo">Sexo</string>
+    <string name="listar_usuarios">Listar Usuários</string>
 
 
 </resources>

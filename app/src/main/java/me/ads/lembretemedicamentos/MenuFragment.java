@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 public class MenuFragment extends Fragment {
 
@@ -40,18 +39,16 @@ public class MenuFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ((item.getItemId())) {
             case R.id.menu_medicamentos:
-                Toast.makeText(getActivity(),"Menu Medicamentos",Toast.LENGTH_LONG).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, new me.ads.lembretemedicamentos.medicamentos.MainFragment()).commit();
                 break;
-
             case R.id.menu_usuario:
-                Toast.makeText(getActivity(),"Menu Usuário",Toast.LENGTH_LONG).show();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, new me.ads.lembretemedicamentos.usuarios.MainFragment()).commit();
                 break;
-
-            case R.id.menu_receitas:
-                Toast.makeText(getActivity(),"Menu Receitas",Toast.LENGTH_LONG).show();
-                break;
+//
+//            case R.id.menu_receitas:
+//                Toast.makeText(getActivity(),"Menu Receitas",Toast.LENGTH_LONG).show();
+//                break;
         }
         return super.onOptionsItemSelected(item);
-
     }
 }
