@@ -46,20 +46,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        try {
-            db.execSQL(CREATE_TABLE_MEDICAMENTOS);
-            db.execSQL(CREATE_TABLE_USUARIOS);
-        } catch (Throwable ex) {
-            System.out.println(ex);
-        }
+        // criação das tabelas
+        db.execSQL(CREATE_TABLE_MEDICAMENTOS);
+        db.execSQL(CREATE_TABLE_USUARIOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // exclusão das tabelas
         db.execSQL(DROP_TABLE_MEDICAMENTOS);
         db.execSQL(DROP_TABLE_USUARIOS);
         onCreate(db);
-
     }
 
     /* Início CRUD Medicamentos */
@@ -99,20 +96,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return id;
     }
+
     public void getAllMedicamentos(Context context, ListView lv) {
-        try {
-            SQLiteDatabase db = this.getReadableDatabase();
-            String[] columns = {"_id", "nome", "dosagem", "tipo", "posologia", "tempotratamento"};
-            Cursor data = db.query(TABLE_MEDICAMENTOS, columns, null, null, null, null, "nome");
-            int[] to = {R.id.textViewIdListarMedicamentos, R.id.textViewNomeListarMedicamentos, R.id.textViewDosagemListarMedicamentos, R.id.textViewTipoListarMedicamentos, R.id.textViewPosologiaListarMedicamentos, R.id.textViewTempotratamentoListarMedicamentos};
-            SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context,
-                    R.layout.medicamentos_item_list_view, data, columns, to, 0);
-            lv.setAdapter(simpleCursorAdapter);
-            db.close();
-        } catch (Throwable ex) {
-            System.out.println(ex);
-        }
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {"_id", "nome", "dosagem", "tipo", "posologia", "tempotratamento"};
+        Cursor data = db.query(TABLE_MEDICAMENTOS, columns, null, null, null, null, "nome");
+        int[] to = {R.id.textViewIdListarMedicamentos, R.id.textViewNomeListarMedicamentos, R.id.textViewDosagemListarMedicamentos, R.id.textViewTipoListarMedicamentos, R.id.textViewPosologiaListarMedicamentos, R.id.textViewTempotratamentoListarMedicamentos};
+        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context,
+                R.layout.medicamentos_item_list_view, data, columns, to, 0);
+        lv.setAdapter(simpleCursorAdapter);
+        db.close();
     }
+
     public Medicamentos getByIdMedicamentos(int id) {
         SQLiteDatabase db =  this.getReadableDatabase();
         String[] columns = {"_id", "nome","dosagem", "tipo", "posologia", "tempotratamento"};

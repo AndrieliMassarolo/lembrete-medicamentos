@@ -95,18 +95,19 @@ public class EditarFragment extends Fragment {
     }
 
     private void editar(int id){
+        // validação dos dados
         if (etNome.getText().toString().equals("")){
-            Toast.makeText(getActivity(),"Por favor informe o nome do medicamento", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(getActivity(),"Por favor informe o nome do medicamento!", Toast.LENGTH_LONG).show();
         } else if (etDosagem.getText().toString().equals("")) {
-            Toast.makeText(getActivity(), "Por favor informe a dosagem do medicamento", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Por favor informe a dosagem do medicamento!", Toast.LENGTH_LONG).show();
         } else if (etTipo.getText().toString().equals("")) {
-            Toast.makeText(getActivity(), "Por favor informe o tipo do medicamento (comprimido, cápsula, gotas, pomada, etc.)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Por favor informe o tipo do medicamento (comprimido, cápsula, gotas, pomada, etc.)!", Toast.LENGTH_LONG).show();
         } else if (etPosologia.getText().toString().equals("")) {
-            Toast.makeText(getActivity(), "Por favor informe a frequência diária do medicamento (quantas vezes ao dia ou a cada quantas horas)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Por favor informe a frequência diária do medicamento (quantas vezes ao dia ou a cada quantas horas)!", Toast.LENGTH_LONG).show();
         } else if (etTempotratamento.getText().toString().equals("")) {
-            Toast.makeText(getActivity(), "Por favor informe o tempo de tratamento do medicamento", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Por favor informe o tempo de tratamento do medicamento!", Toast.LENGTH_LONG).show();
         } else {
+            // atualização do medicamento
             m = new Medicamentos();
             m.setId(id);
             m.setNome(etNome.getText().toString());
@@ -115,17 +116,17 @@ public class EditarFragment extends Fragment {
             m.setPosologia(etPosologia.getText().toString());
             m.setTempotratamento(etTempotratamento.getText().toString());
             databaseHelper.updateMedicamentos(m);
-            Toast.makeText(getActivity(), "Medicamento atualizado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Medicamento atualizado!", Toast.LENGTH_SHORT).show();
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_medicamentos, new ListarFragment()).commit();
         }
     }
 
     private void excluir(int id) {
+        // exclusão do medicamento
         m = new Medicamentos();
         m.setId(id);
         databaseHelper.deleteMedicamentos(m);
-        Toast.makeText(getActivity(), "Medicamento excluído", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Medicamento excluído!", Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_medicamentos, new ListarFragment()).commit();
-
     }
 }

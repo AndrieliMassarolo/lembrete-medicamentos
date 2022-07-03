@@ -52,7 +52,6 @@ public class AdicionarFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 adicionar();
-
             }
         });
 
@@ -60,19 +59,20 @@ public class AdicionarFragment extends Fragment {
         return v;
     }
 
-    private void adicionar(){
+    private void adicionar() {
+        // validação dos dados
         if (etNome.getText().toString().equals("")){
             Toast.makeText(getActivity(),"Por favor informe o nome do medicamento", Toast.LENGTH_LONG).show();
-
         } else if (etDosagem.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor informe a dosagem do medicamento", Toast.LENGTH_LONG).show();
         } else if (etTipo.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor informe o tipo do medicamento (comprimido, cápsula, gotas, pomada, etc.)", Toast.LENGTH_LONG).show();
         } else if (etPosologia.getText().toString().equals("")) {
-        Toast.makeText(getActivity(), "Por favor informe a frequência diária do medicamento (quantas vezes ao dia ou a cada quantas horas)", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Por favor informe a frequência diária do medicamento (quantas vezes ao dia ou a cada quantas horas)", Toast.LENGTH_LONG).show();
         } else if (etTempotratamento.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor informe o tempo de tratamento do medicamento", Toast.LENGTH_LONG).show();
         } else {
+            // criação do medicamento
             DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
             Medicamentos m = new Medicamentos();
             m.setNome(etNome.getText().toString());

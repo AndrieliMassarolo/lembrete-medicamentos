@@ -31,6 +31,7 @@ public class MainFragment extends Fragment {
         }
 
         Button btnAdicionar = v.findViewById(R.id.button_adicionar_medicamentos);
+        // handler do botão adicionar
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,15 +40,13 @@ public class MainFragment extends Fragment {
         });
 
         Button btnListar = v.findViewById(R.id.button_listar_medicamentos);
+        // handler do botão listar
         btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_medicamentos, new ListarFragment()).commit();
             }
         });
-
-
-        // Inflate the layout for this fragment
         return v;
     }
 }

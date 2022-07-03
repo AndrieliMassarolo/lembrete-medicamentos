@@ -91,6 +91,7 @@ public class EditarFragment extends Fragment {
     }
 
     private void editar (int id) {
+        //validação dos dados
         if (etNome.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe o nome!", Toast.LENGTH_LONG).show();
         } else if (etEmail.getText().toString().equals("")) {
@@ -102,6 +103,7 @@ public class EditarFragment extends Fragment {
         } else if (etDataNascimento.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe a data de nascimento!", Toast.LENGTH_LONG).show();
         } else {
+            //atualização do usuário
             DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
             Usuario u = new Usuario();
             u.setId(id);
@@ -117,6 +119,7 @@ public class EditarFragment extends Fragment {
     }
 
     private void excluir(int id) {
+        // exclusão do usuário
         u = new Usuario();
         u.setId(id);
         databaseHelper.deleteUsuario(u);

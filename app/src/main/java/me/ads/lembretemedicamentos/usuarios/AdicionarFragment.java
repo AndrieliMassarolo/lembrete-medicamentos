@@ -54,6 +54,7 @@ public class AdicionarFragment extends Fragment {
     }
 
     private void adicionar () {
+        // validação dos dados
         if (etNome.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe o nome!", Toast.LENGTH_LONG).show();
         } else if (etEmail.getText().toString().equals("")) {
@@ -65,6 +66,7 @@ public class AdicionarFragment extends Fragment {
         } else if (etDataNascimento.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe a data de nascimento!", Toast.LENGTH_LONG).show();
         } else {
+            //criação do usuário
             DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
             Usuario u = new Usuario();
             u.setNome(etNome.getText().toString());

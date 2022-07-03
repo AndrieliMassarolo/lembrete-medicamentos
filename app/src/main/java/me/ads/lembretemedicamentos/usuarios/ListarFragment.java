@@ -27,12 +27,13 @@ public class ListarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // listagem dos usuários
         View v = inflater.inflate(R.layout.usuario_fragment_listar, container, false);
         DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         ListView lv = v.findViewById(R.id.listViewUsuarios);
         databaseHelper.getAllUsuario(getActivity(), lv);
 
+        // handler do botão listar
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

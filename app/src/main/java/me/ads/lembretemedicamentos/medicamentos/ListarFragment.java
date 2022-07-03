@@ -28,14 +28,13 @@ public class ListarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
+        // listagem dos medicamentos
         View v = inflater.inflate(R.layout.medicamentos_fragment_listar, container, false);
-
         DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
         ListView lv = v.findViewById(R.id.list_view_listar_medicamentos);
         databaseHelper.getAllMedicamentos(getActivity(), lv);
 
+        // handler do botão listar
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -49,8 +48,6 @@ public class ListarFragment extends Fragment {
                 ft.replace(R.id.frame_medicamentos, editar).commit();
             }
         });
-
         return v;
-
     }
 }
