@@ -44,6 +44,10 @@ public class MenuFragment extends Fragment {
             case R.id.menu_usuario:
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, new me.ads.lembretemedicamentos.usuarios.MainFragment()).commit();
                 break;
+
+            case R.id.menu_medico:
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, new me.ads.lembretemedicamentos.medico.MainFragment()).commit();
+                break;
 //
 //            case R.id.menu_receitas:
 //                Toast.makeText(getActivity(),"Menu Receitas",Toast.LENGTH_LONG).show();

@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">Lembrete Medicamentos</string>
 
-    <string name="usuario">Usuário</string>
     <string name="receitas">Receitas</string>
-
     <string name="medicamentos">Medicamentos</string>
+    <string name="medico">Médicos</string>
+    <string name="usuarios">Usuários</string>
+
+
     <string name="listar_medicamentos">Listar Medicamentos</string>
     <string name="gerenciar_medicamentos">Gerenciar Medicamentos</string>
     <string name="excluir_medicamentos_mensagem">Deseja excluir o medicamento?</string>
@@ -30,6 +32,12 @@
     <string name="e_mail">E-mail</string>
     <string name="sexo">Sexo</string>
     <string name="listar_usuarios">Listar Usuários</string>
+    <string name="gerenciar_medicos">Gerenciar Médicos</string>
+    <string name="crm">CRM</string>
+    <string name="telefone">Telefone</string>
+    <string name="especialidade">Especialidade</string>
+    <string name="listar_medicos">Listar Médicos</string>
+
 
 
 </resources>
