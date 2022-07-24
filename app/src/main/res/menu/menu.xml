@@ -6,10 +6,6 @@
         android:title="@string/medicamentos"/>
 
     <item
-        android:id="@+id/menu_receitas"
-        android:title="@string/receitas"/>
-
-    <item
         android:id="@+id/menu_medico"
         android:title="@string/medico"/>
 

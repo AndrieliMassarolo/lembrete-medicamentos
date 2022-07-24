@@ -7,6 +7,7 @@ public class Medicamentos {
     private String dosagem;
     private String tipo;
     private String posologia;
+    private String horario;
     private String tempotratamento;
 
     public int getId() {
@@ -55,5 +56,13 @@ public class Medicamentos {
 
     public void setTempotratamento(String tempotratamento) {
         this.tempotratamento = tempotratamento;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 }

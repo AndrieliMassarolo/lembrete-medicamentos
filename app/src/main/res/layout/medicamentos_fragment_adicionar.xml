@@ -82,6 +82,19 @@
                 android:inputType="textPersonName"/>
 
             <TextView
+                android:id="@+id/text_view_horario_medicamentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="@string/horario" />
+
+            <EditText
+                android:id="@+id/editText_horario_medicamentos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"/>
+
+            <TextView
                 android:id="@+id/text_view_tempo_tratamento_medicamentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

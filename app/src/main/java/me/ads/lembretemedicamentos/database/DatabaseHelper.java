@@ -29,6 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "dosagem VARCHAR(100), " +
             "tipo VARCHAR(100), " +
             "posologia VARCHAR(100), " +
+            "horario VARCHAR(100), " +
             "tempotratamento VARCHAR(100));";
 
     private static final String DROP_TABLE_MEDICAMENTOS = "DROP TABLE IF EXISTS " + TABLE_MEDICAMENTOS;
@@ -62,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DROP_TABLE_RECEITAS = "DROP TABLE IF EXISTS " + TABLE_RECEITAS;
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 5);
+        super(context, DATABASE_NAME, null, 6);
 
     }
 
@@ -93,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("dosagem", m.getDosagem());
         cv.put("tipo", m.getTipo());
         cv.put("posologia", m.getPosologia());
+        cv.put("horario", m.getHorario());
         cv.put("tempotratamento", m.getTempotratamento());
         long id = db.insert(TABLE_MEDICAMENTOS, null, cv);
         db.close();
@@ -106,6 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("dosagem", m.getDosagem());
         cv.put("tipo", m.getTipo());
         cv.put("posologia", m.getPosologia());
+        cv.put("horario", m.getHorario());
         cv.put("tempotratamento", m.getTempotratamento());
         long id = db.update(TABLE_MEDICAMENTOS, cv,
                 "_id = ?", new String[]{String.valueOf(m.getId())});
@@ -125,9 +128,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void getAllMedicamentos(Context context, ListView lv) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {"_id", "nome", "dosagem", "tipo", "posologia", "tempotratamento"};
+        String[] columns = {"_id", "nome", "dosagem", "tipo", "posologia", "horario", "tempotratamento"};
         Cursor data = db.query(TABLE_MEDICAMENTOS, columns, null, null, null, null, "nome");
-        int[] to = {R.id.textViewIdListarMedicamentos, R.id.textViewNomeListarMedicamentos, R.id.textViewDosagemListarMedicamentos, R.id.textViewTipoListarMedicamentos, R.id.textViewPosologiaListarMedicamentos, R.id.textViewTempotratamentoListarMedicamentos};
+        int[] to = {R.id.textViewIdListarMedicamentos, R.id.textViewNomeListarMedicamentos, R.id.textViewDosagemListarMedicamentos, R.id.textViewTipoListarMedicamentos,
+                R.id.textViewPosologiaListarMedicamentos, R.id.textViewHorarioListarMedicamentos, R.id.textViewTempotratamentoListarMedicamentos};
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context,
                 R.layout.medicamentos_item_list_view, data, columns, to, 0);
         lv.setAdapter(simpleCursorAdapter);
@@ -136,7 +140,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Medicamentos getByIdMedicamentos(int id) {
         SQLiteDatabase db =  this.getReadableDatabase();
-        String[] columns = {"_id", "nome","dosagem", "tipo", "posologia", "tempotratamento"};
+        String[] columns = {"_id", "nome","dosagem", "tipo", "posologia", "horario", "tempotratamento"};
         String[] args = {String.valueOf(id)};
         Cursor data = db.query(TABLE_MEDICAMENTOS, columns, "_id = ?", args, null, null, null);
         data.moveToFirst();
@@ -146,7 +150,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         m.setDosagem(data.getString(2));
         m.setTipo(data.getString(3));
         m.setPosologia(data.getString(4));
-        m.setTempotratamento(data.getString(5));
+        m.setHorario(data.getString(5));
+        m.setTempotratamento(data.getString(6));
         data.close();
         db.close();
         return m;
@@ -276,69 +281,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /* Início CRUD Receitas */
 
-    public long createReceitas(Receitas r) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("medicamento", r.getMedicamento());
-        cv.put("medico", r.getMedico());
-        cv.put("data", r.getData());
-        cv.put("validade", r.getValidade());
-        long id = db.insert(TABLE_RECEITAS, null, cv);
-        db.close();
-        return id;
-    }
-
-    public long updateReceitas(Receitas r) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("medicamento", r.getMedicamento());
-        cv.put("medico", r.getMedico());
-        cv.put("data", r.getData());
-        cv.put("validade", r.getValidade());
-        long id = db.update(TABLE_RECEITAS, cv,
-                "_id = ?", new String[]{String.valueOf(r.getId())});
-        db.close();
-        return id;
-    }
-
-    public long deleteReceitas(Receitas r) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        long id = db.delete(TABLE_RECEITAS,
-                "_id = ?",
-                new String[]{String.valueOf(r.getId())});
-        db.close();
-        return id;
-    }
-
-    public void getAllReceitas(Context context, ListView lv) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {"_id", "medicamento", "medico", "data", "validade"};
-        Cursor data = db.query(TABLE_RECEITAS, columns, null, null, null, null, "data");
-        int[] to = {R.id.textViewIdListarReceitas, R.id.textViewMedicamentoListarReceitas, R.id.textViewMedicoListarReceitas, R.id.textViewDataListarReceitas, R.id.textViewValidadeListarReceitas};
-        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context,
-                R.layout.receitas_item_list_view, data, columns, to, 0);
-        lv.setAdapter(simpleCursorAdapter);
-        db.close();
-    }
-
-    public Receitas getByIdReceitas(int id) {
-        SQLiteDatabase db =  this.getReadableDatabase();
-        String[] columns = {"_id", "medicamento","medico", "data", "validade"};
-        String[] args = {String.valueOf(id)};
-        Cursor data = db.query(TABLE_RECEITAS, columns, "_id = ?", args, null, null, null);
-        data.moveToFirst();
-        Receitas r = new Receitas();
-        r.setId(data.getInt(0));
-        r.setNome(data.getString(1));
-        r.setDosagem(data.getString(2));
-        m.setTipo(data.getString(3));
-        m.setPosologia(data.getString(4));
-        m.setTempotratamento(data.getString(5));
-        data.close();
-        db.close();
-        return m;
-    }
-    /* Fim CRUD Receitas */
+//    public long createReceitas(Receitas r) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put("medicamento", r.getMedicamento());
+//        cv.put("medico", r.getMedico());
+//        cv.put("data", r.getData());
+//        cv.put("validade", r.getValidade());
+//        long id = db.insert(TABLE_RECEITAS, null, cv);
+//        db.close();
+//        return id;
+//    }
+//
+//    public long updateReceitas(Receitas r) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put("medicamento", r.getMedicamento());
+//        cv.put("medico", r.getMedico());
+//        cv.put("data", r.getData());
+//        cv.put("validade", r.getValidade());
+//        long id = db.update(TABLE_RECEITAS, cv,
+//                "_id = ?", new String[]{String.valueOf(r.getId())});
+//        db.close();
+//        return id;
+//    }
+//
+//    public long deleteReceitas(Receitas r) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//
+//        long id = db.delete(TABLE_RECEITAS,
+//                "_id = ?",
+//                new String[]{String.valueOf(r.getId())});
+//        db.close();
+//        return id;
+//    }
+//
+//    public void getAllReceitas(Context context, ListView lv) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        String[] columns = {"_id", "medicamento", "medico", "data", "validade"};
+//        Cursor data = db.query(TABLE_RECEITAS, columns, null, null, null, null, "data");
+//        int[] to = {R.id.textViewIdListarReceitas, R.id.textViewMedicamentoListarReceitas, R.id.textViewMedicoListarReceitas, R.id.textViewDataListarReceitas, R.id.textViewValidadeListarReceitas};
+//        SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(context,
+//                R.layout.receitas_item_list_view, data, columns, to, 0);
+//        lv.setAdapter(simpleCursorAdapter);
+//        db.close();
+//    }
+//
+//    public Receitas getByIdReceitas(int id) {
+//        SQLiteDatabase db =  this.getReadableDatabase();
+//        String[] columns = {"_id", "medicamento","medico", "data", "validade"};
+//        String[] args = {String.valueOf(id)};
+//        Cursor data = db.query(TABLE_RECEITAS, columns, "_id = ?", args, null, null, null);
+//        data.moveToFirst();
+//        Receitas r = new Receitas();
+//        r.setId(data.getInt(0));
+//        r.setNome(data.getString(1));
+//        r.setDosagem(data.getString(2));
+//        m.setTipo(data.getString(3));
+//        m.setPosologia(data.getString(4));
+//        m.setTempotratamento(data.getString(5));
+//        data.close();
+//        db.close();
+//        return m;
+//    }
+//    /* Fim CRUD Receitas */
 
 }

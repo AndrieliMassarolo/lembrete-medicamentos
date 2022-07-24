@@ -2,6 +2,7 @@ package me.ads.lembretemedicamentos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import me.ads.lembretemedicamentos.medicamentos.MainFragment;

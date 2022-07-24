@@ -37,7 +37,7 @@
     <string name="telefone">Telefone</string>
     <string name="especialidade">Especialidade</string>
     <string name="listar_medicos">Listar Médicos</string>
-
+    <string name="horario">Horário</string>
 
 
 </resources>

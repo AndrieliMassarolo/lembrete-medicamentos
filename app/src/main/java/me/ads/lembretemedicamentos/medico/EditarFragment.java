@@ -120,7 +120,7 @@ public class EditarFragment extends Fragment {
         d = new Medico();
         d.setId(id);
         databaseHelper.deleteMedico(d);
-        Toast.makeText(getActivity(), "Medicamento excluído!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Médico excluído!", Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameMedico, new ListarFragment()).commit();
     }
 }
